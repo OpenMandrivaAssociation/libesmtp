@@ -20,6 +20,7 @@ BuildRequires:	automake1.7
 BuildRequires:	autoconf2.5
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 LibESMTP is a library to manage posting (or submission of) electronic
