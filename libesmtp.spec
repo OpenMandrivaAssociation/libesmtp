@@ -1,13 +1,14 @@
 %define major 5
 %define libname	%mklibname esmtp %{major}
+%define develname %mklibname esmtp -d
 
 %define plugindir %{_libdir}/esmtp%{major}-plugins
 
 Summary:	SMTP client library
 Name:		libesmtp
 Version:	1.0.4
-Release:	%mkrel 3
-License:	LGPL
+Release:	%mkrel 4
+License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.stafford.uklinux.net/libesmtp/
 Source0:	ttp://www.stafford.uklinux.net/libesmtp/%{name}-%{version}.tar.bz2
@@ -43,14 +44,14 @@ program that must be able to post electronic mail but where mail
 functionality is not the program's primary purpose.
 
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Headers and development libraries for libESMTP
 Group:		Development/C
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{name}-devel
+Obsoletes:	%{libname}-devel
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 LibESMTP is a library to manage posting (or submission of) electronic
 mail using SMTP to a preconfigured Mail Transport Agent (MTA) such as
 Exim.
@@ -107,10 +108,10 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING* ChangeLog NEWS Notes README TODO
-%{_libdir}/libesmtp.so.*
+%{_libdir}/libesmtp.so.%{major}*
 %{plugindir}
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %multiarch %{multiarch_bindir}/libesmtp-config
 %{_bindir}/libesmtp-config
