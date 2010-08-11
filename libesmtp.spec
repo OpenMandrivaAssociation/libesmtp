@@ -1,4 +1,4 @@
-%define major 5
+%define major 6
 %define libname	%mklibname esmtp %{major}
 %define develname %mklibname esmtp -d
 
@@ -6,14 +6,13 @@
 
 Summary:	SMTP client library
 Name:		libesmtp
-Version:	1.0.4
-Release:	%mkrel 8
+Version:	1.0.6
+Release:	%mkrel 1
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.stafford.uklinux.net/libesmtp/
-Source0:	ttp://www.stafford.uklinux.net/libesmtp/%{name}-%{version}.tar.bz2
+Source0:	ttp://www.stafford.uklinux.net/libesmtp/%{name}-%{version}.tar.gz
 Patch0:		libesmtp-build.patch
-Patch1:		libesmtp-ssl.diff
 BuildRequires:	openssl-devel
 BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires:	libltdl-devel
@@ -63,7 +62,6 @@ necessary for building programs against libesmtp.
 
 %setup -q
 %patch0 -p1 -b .build
-%patch1 -p0 -b .ssl
 
 %build
 rm -f configure
