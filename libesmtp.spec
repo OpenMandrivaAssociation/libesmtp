@@ -7,7 +7,7 @@
 Summary:	SMTP client library
 Name:		libesmtp
 Version:	1.0.6
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.stafford.uklinux.net/libesmtp/
@@ -16,7 +16,7 @@ Patch0:		libesmtp-build.patch
 BuildRequires:	openssl-devel
 BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires:	libltdl-devel
-BuildRequires:	automake1.7
+BuildRequires:	automake
 BuildRequires:	autoconf2.5
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
@@ -65,7 +65,7 @@ necessary for building programs against libesmtp.
 
 %build
 rm -f configure
-libtoolize --copy --force; aclocal-1.7; autoconf; autoheader; automake-1.7 --gnu --add-missing --copy
+libtoolize --copy --force; aclocal; autoconf; autoheader; automake --gnu --add-missing --copy
 
 if pkg-config openssl ; then
     export CFLAGS="$CFLAGS %{optflags} `pkg-config --cflags openssl`"
