@@ -7,14 +7,13 @@
 Summary:	SMTP client library
 Name:		libesmtp
 Version:	1.0.6
-Release:	%mkrel 2
+Release:	%mkrel 4
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.stafford.uklinux.net/libesmtp/
 Source0:	ttp://www.stafford.uklinux.net/libesmtp/%{name}-%{version}.tar.gz
 Patch0:		libesmtp-build.patch
 BuildRequires:	openssl-devel
-BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires:	libltdl-devel
 BuildRequires:	automake
 BuildRequires:	autoconf2.5
@@ -111,7 +110,7 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-%multiarch %{multiarch_bindir}/libesmtp-config
+%{multiarch_bindir}/libesmtp-config
 %{_bindir}/libesmtp-config
 %{_includedir}/*
 %{_libdir}/*.so
