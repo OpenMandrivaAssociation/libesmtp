@@ -7,7 +7,7 @@
 Summary:	SMTP client library
 Name:		libesmtp
 Version:	1.0.6
-Release:	%mkrel 5
+Release:	6
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.stafford.uklinux.net/libesmtp/
@@ -15,11 +15,8 @@ Source0:	ttp://www.stafford.uklinux.net/libesmtp/%{name}-%{version}.tar.gz
 Patch0:		libesmtp-build.patch
 BuildRequires:	openssl-devel
 BuildRequires:	libltdl-devel
-BuildRequires:	automake
-BuildRequires:	autoconf2.5
-BuildRequires:	libtool
+BuildRequires:	autoconf automake libtool
 BuildRequires:	pkgconfig
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 LibESMTP is a library to manage posting (or submission of) electronic
@@ -45,7 +42,7 @@ functionality is not the program's primary purpose.
 %package -n	%{develname}
 Summary:	Headers and development libraries for libESMTP
 Group:		Development/C
-Requires:	%{libname} = %{version}
+Requires:	%{libname} >= %{version}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{libname}-devel
 
@@ -86,35 +83,19 @@ rm -rf %{buildroot}
 
 %makeinstall_std
 
-# remove unneeded files
-rm -f %{buildroot}%{plugindir}/*.a
-
 %multiarch_binaries %{buildroot}%{_bindir}/libesmtp-config
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
+# cleanup
+rm -f %{buildroot}%{plugindir}/*.*a
+rm -f %{buildroot}%{_libdir}/*.*a
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc AUTHORS COPYING* ChangeLog NEWS Notes README TODO
 %{_libdir}/libesmtp.so.%{major}*
 %{plugindir}
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{multiarch_bindir}/libesmtp-config
 %{_bindir}/libesmtp-config
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.a
-%{_libdir}/*.la
-
-
