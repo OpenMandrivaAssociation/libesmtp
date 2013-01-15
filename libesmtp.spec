@@ -13,6 +13,7 @@ Group:		System/Libraries
 URL:		http://www.stafford.uklinux.net/libesmtp/
 Source0:	ttp://www.stafford.uklinux.net/libesmtp/%{name}-%{version}.tar.gz
 Patch0:		libesmtp-build.patch
+Patch1:		libesmtp-automake-1.13.patch
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	libltdl-devel
 BuildRequires:	automake
@@ -55,7 +56,7 @@ necessary for building programs against libesmtp.
 
 %prep
 %setup -q
-%patch0 -p1 -b .build
+%apply_patches
 
 %build
 rm -f configure
