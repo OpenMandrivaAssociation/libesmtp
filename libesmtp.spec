@@ -6,7 +6,7 @@
 Summary:	SMTP client library
 Name:		libesmtp
 Version:	1.0.6
-Release:	9
+Release:	10
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.stafford.uklinux.net/libesmtp/
