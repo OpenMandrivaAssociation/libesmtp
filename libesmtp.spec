@@ -6,11 +6,11 @@
 Summary:	SMTP client library
 Name:		libesmtp
 Version:	1.0.6
-Release:	15
+Release:	16
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://www.stafford.uklinux.net/libesmtp/
-Source0:	ttp://www.stafford.uklinux.net/libesmtp/%{name}-%{version}.tar.gz
+Url:		http://brianstafford.info/libesmtp/
+Source0:	http://brianstafford.info/libesmtp/%{name}-%{version}.tar.gz
 Patch0:		libesmtp-build.patch
 Patch1:		libesmtp-automake-1.13.patch
 BuildRequires:	libtool
@@ -73,15 +73,12 @@ fi
 %install
 %makeinstall_std
 
-%multiarch_binaries %{buildroot}%{_bindir}/libesmtp-config
-
 %files -n %{libname}
 %{_libdir}/libesmtp.so.%{major}*
 %{plugindir}
 
 %files -n %{devname}
 %doc AUTHORS COPYING* ChangeLog NEWS Notes README TODO
-%{multiarch_bindir}/libesmtp-config
 %{_bindir}/libesmtp-config
 %{_includedir}/*
 %{_libdir}/*.so
