@@ -48,7 +48,7 @@ necessary for building programs against libesmtp.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 rm -f configure
 libtoolize --copy --force; aclocal; autoconf; autoheader; automake --gnu --add-missing --copy
