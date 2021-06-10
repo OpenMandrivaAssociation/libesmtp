@@ -66,7 +66,7 @@ fi
 
 %files -n %{libname}
 %{_libdir}/libesmtp.so.%{major}*
-%{_libdir}/esmtp-plugins/
+%{_libdir}/esmtp-plugins-*
 
 %files -n %{devname}
 %{_includedir}/*
