@@ -1,3 +1,4 @@
+%define oname libESMTP
 %define major	6
 %define libname	%mklibname esmtp %{major}
 %define devname	%mklibname esmtp -d
@@ -5,15 +6,14 @@
 
 Summary:	SMTP client library
 Name:		libesmtp
-Version:	1.0.6
-Release:	17
+Version:	1.1.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://brianstafford.info/libesmtp/
-Source0:	http://brianstafford.info/libesmtp/%{name}-%{version}.tar.gz
-Patch0:		libesmtp-build.patch
-Patch1:		libesmtp-automake-1.13.patch
-BuildRequires:	libtool
+Url:		https://github.com/libesmtp/libESMTP
+Source0:	https://github.com/libesmtp/libESMTP/archive/refs/tags/v%{version}/%{oname}-%{version}.tar.gz
+
+BuildRequires:	meson
 BuildRequires:	libltdl-devel
 BuildRequires:	pkgconfig(openssl)
 
@@ -50,8 +50,6 @@ necessary for building programs against libesmtp.
 %setup -q
 %autopatch -p1
 
-rm -f configure
-libtoolize --copy --force; aclocal; autoconf; autoheader; automake --gnu --add-missing --copy
 
 if pkg-config openssl ; then
 	export CFLAGS="$CFLAGS %{optflags} `pkg-config --cflags openssl`"
@@ -60,18 +58,12 @@ if pkg-config openssl ; then
 fi
 
 %build
-%configure2_5x \
-	--with-auth-plugin-dir=%{plugindir} \
-	--enable-pthreads \
-	--enable-require-all-recipients \
-	--enable-etrn \
-	--enable-ntlm \
-	--disable-static
+%meson
 
-%make
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 
 %files -n %{libname}
 %{_libdir}/libesmtp.so.%{major}*
