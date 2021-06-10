@@ -47,7 +47,7 @@ The libesmtp-devel package contains headers and development libraries
 necessary for building programs against libesmtp.
 
 %prep
-%setup -q
+%setup -qn %{oname}-%{version}
 %autopatch -p1
 
 
