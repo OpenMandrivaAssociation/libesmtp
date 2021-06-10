@@ -67,7 +67,7 @@ fi
 
 %files -n %{libname}
 %{_libdir}/libesmtp.so.%{major}*
-%{plugindir}
+#{plugindir}
 
 %files -n %{devname}
 %doc AUTHORS COPYING* ChangeLog NEWS Notes README TODO
