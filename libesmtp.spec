@@ -50,7 +50,6 @@ necessary for building programs against libesmtp.
 %setup -qn %{oname}-%{version}
 %autopatch -p1
 
-
 if pkg-config openssl ; then
 	export CFLAGS="$CFLAGS %{optflags} `pkg-config --cflags openssl`"
 	export CPPFLAGS="$CPPFLAGS `pkg-config --cflags-only-I openssl`"
@@ -67,11 +66,9 @@ fi
 
 %files -n %{libname}
 %{_libdir}/libesmtp.so.%{major}*
-#{plugindir}
+%{_libdir}/esmtp-plugins/
 
 %files -n %{devname}
-#doc
-#{_bindir}/libesmtp-config
 %{_includedir}/*
 %{_libdir}/*.so
-
+%{_libdir}/pkgconfig/libesmtp-1.0.pc
