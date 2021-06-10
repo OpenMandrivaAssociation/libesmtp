@@ -70,8 +70,8 @@ fi
 #{plugindir}
 
 %files -n %{devname}
-%doc AUTHORS COPYING* ChangeLog NEWS Notes README TODO
-%{_bindir}/libesmtp-config
+#doc
+#{_bindir}/libesmtp-config
 %{_includedir}/*
 %{_libdir}/*.so
 
