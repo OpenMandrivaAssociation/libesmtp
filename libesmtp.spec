@@ -7,7 +7,7 @@
 Summary:	SMTP client library
 Name:		libesmtp
 Version:	1.1.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://github.com/libesmtp/libESMTP
